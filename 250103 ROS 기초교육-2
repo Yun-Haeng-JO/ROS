@@ -1,0 +1,295 @@
+# 1. ROS - 로봇 운영 체제
+
+로봇 응용 프로그램을 개발하는 데 필요한 하드웨어 추상화, 하위 디바이스 제어, 공통 기능 구현, 프로세스 간 메시지 패싱, 패키지 관리, 개발에 필요한 라이브러리와 다양한 개발 및 디버깅 도구를 제공하는 소프트웨어 플랫폼이다.
+
+### ROS의 목적
+
+로봇 소프트웨어 개발을 전 세계적으로 협업할 수 있는 환경을 제공하는 것이다.
+
+(로봇 소프트웨어 플랫폼, 미들웨어, 프레임워크보다는 연구와 개발에서 코드 재사용을 극대화하는 데 초점을 맞추고 있다.)
+
+### ROS의 기능
+
+- **분산 프로세스**: 프로그램은 최소 단위인 프로세스(node, 노드) 형태로 구성되며, 각 프로세스는 독립적으로 실행되면서도 상호 간에 데이터를 주고받을 수 있다.
+- **패키지 단위 관리**: 여러 개의 프로세스를 하나의 패키지로 묶어 관리할 수 있어, 개발 및 사용이 용이하고, 배포와 공유, 수정도 편리하다.
+- **공개 레포지토리**: 개발자는 GitHub 등에서 프로젝트를 공개하고, 해당 프로젝트에 대한 라이센스를 명시해야 한다.
+- **API 형태**: ROS는 API를 제공하여, 개발자가 기존에 사용하던 코드를 쉽게 통합하고 적용할 수 있게 한다.
+- **다양한 프로그래밍 언어 지원**: ROS는 Python, C++, Lisp, Java, C#, Lua, Ruby 등 여러 프로그래밍 언어를 지원한다.
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/2066b9f8-f73a-4b0f-9b07-f7fc6812fd43/image.png)
+
+# ROS 주요기능
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/396ab2cc-0154-458c-986b-f5f035f89748/image.png)
+
+# ROS 중요 개념
+
+- Nodes
+- Messages and Topics
+- Actions
+- Services
+- ROS Master
+- Parameters
+- Packages and Stacks
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/92e01e95-bf0b-4b9f-a258-69c497572315/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/c5b399c4-0875-4839-a51d-52b871ac0eb6/image.png)
+
+# Node는 프로그램 최소 실행 단위
+
+# ROS(Robot Operating System)- 메시지 통신
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/56726145-f00b-4575-add2-d04d06ed8e54/image.png)
+
+# 스왑 SWAP이란?
+
+Swap 메모리는 리눅스 시스템에서 메모리가 부족할 때 디스크를 임시 메모리처럼 사용하도록 설정하는 기능이다. 실제 RAM이 부족할 때, 
+
+디스크의 일부 공간을 가상 메모리로 활용하여 시스템이 더 많은 메모리 공간을 사용하는 것처럼 동작하게 된다. 
+
+이를 통해 RAM의 용량을 초과하는 메모리 사용을 가능하게 하지만, 
+
+디스크 속도가 메모리 속도보다 훨씬 느리기 때문에 성능 저하가 있을 수 있다.
+
+### SWAP 용량 늘리기
+
+```c
+sudo service dphys-swapfile stop
+```
+
+### 수정을 위해 /etc/dphys-swapfile 경로 파일 열기
+
+```c
+sudo nano /etc/dphys-swapfile
+```
+
+SWAP 다시 시작
+
+```c
+sudo service dphys-swapfile start
+```
+
+# Turtle 실행
+
+```c
+roscore
+```
+
+```c
+ rosnode list
+```
+
+```c
+rosrun turtlesim turtlesim_node
+```
+
+```c
+rosrun turtlesim turtle_teleop_key
+```
+
+```c
+rqt_graph
+```
+
+```c
+rostopic list
+```
+
+```c
+ rostopic echo /turtle/cmd_vel
+```
+
+터미널에서 순서대로 실행
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/2a7a9e43-5116-49b2-85d9-45fe494466e7/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/30eba49a-5ffa-4394-8f71-2b0565f76aa0/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/770d9cd5-053b-4e33-b34e-9a79a2f7a939/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/d686d997-1487-4ac8-a46f-9be0165c3227/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/84d6aa30-315f-4a11-8cc4-b3274560af54/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/2694fc50-0631-4f2d-affb-42c96bb8c90c/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/91285dff-4063-4ce3-80ff-94bfaf4b1182/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/2ccd6d9e-5b9e-426d-88f6-061098924ecd/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/c988917e-89da-46d7-bfb7-f0c5b8265ef7/image.png)
+
+# ros package 만들기
+
+```c
+cs
+catkin_create_pkg my_first_pkg std_msgs rospy roscpp
+
+cs
+cm
+```
+
+순서대로 입력
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/abddcf4d-1d0b-4c5c-8d17-b60644c94dbf/image.png)
+
+# listener code
+
+```c
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+
+/**
+ * This tutorial demonstrates simple receipt of messages over the ROS system.
+ */
+void chatterCallback(const std_msgs::String::ConstPtr& msg)
+{
+  ROS_INFO("I heard: [%s]", msg->data.c_str());
+}
+
+int main(int argc, char **argv)
+{
+  /**
+   * The ros::init() function needs to see argc and argv so that it can perform
+   * any ROS arguments and name remapping that were provided at the command line.
+   * For programmatic remappings you can use a different version of init() which takes
+   * remappings directly, but for most command-line programs, passing argc and argv is
+   * the easiest way to do it.  The third argument to init() is the name of the node.
+   *
+   * You must call one of the versions of ros::init() before using any other
+   * part of the ROS system.
+   */
+  ros::init(argc, argv, "listener");
+
+  /**
+   * NodeHandle is the main access point to communications with the ROS system.
+   * The first NodeHandle constructed will fully initialize this node, and the last
+   * NodeHandle destructed will close down the node.
+   */
+  ros::NodeHandle n;
+
+  /**
+   * The subscribe() call is how you tell ROS that you want to receive messages
+   * on a given topic.  This invokes a call to the ROS
+   * master node, which keeps a registry of who is publishing and who
+   * is subscribing.  Messages are passed to a callback function, here
+   * called chatterCallback.  subscribe() returns a Subscriber object that you
+   * must hold on to until you want to unsubscribe.  When all copies of the Subscriber
+   * object go out of scope, this callback will automatically be unsubscribed from
+   * this topic.
+   *
+   * The second parameter to the subscribe() function is the size of the message
+   * queue.  If messages are arriving faster than they are being processed, this
+   * is the number of messages that will be buffered up before beginning to throw
+   * away the oldest ones.
+   */
+  ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+
+  /**
+   * ros::spin() will enter a loop, pumping callbacks.  With this version, all
+   * callbacks will be called from within this thread (the main one).  ros::spin()
+   * will exit when Ctrl-C is pressed, or the node is shutdown by the master.
+   */
+  ros::spin();
+
+  return 0;
+}
+
+```
+
+# talker code
+
+```c
+#include "ros/ros.h"
+#include "std_msgs/String.h"
+
+#include <sstream>
+
+/**
+ * This tutorial demonstrates simple sending of messages over the ROS system.
+ */
+int main(int argc, char **argv)
+{
+  /**
+   * The ros::init() function needs to see argc and argv so that it can perform
+   * any ROS arguments and name remapping that were provided at the command line.
+   * For programmatic remappings you can use a different version of init() which takes
+   * remappings directly, but for most command-line programs, passing argc and argv is
+   * the easiest way to do it.  The third argument to init() is the name of the node.
+   *
+   * You must call one of the versions of ros::init() before using any other
+   * part of the ROS system.
+   */
+  ros::init(argc, argv, "talker");
+
+  /**
+   * NodeHandle is the main access point to communications with the ROS system.
+   * The first NodeHandle constructed will fully initialize this node, and the last
+   * NodeHandle destructed will close down the node.
+   */
+  ros::NodeHandle n;
+
+  /**
+   * The advertise() function is how you tell ROS that you want to
+   * publish on a given topic name. This invokes a call to the ROS
+   * master node, which keeps a registry of who is publishing and who
+   * is subscribing. After this advertise() call is made, the master
+   * node will notify anyone who is trying to subscribe to this topic name,
+   * and they will in turn negotiate a peer-to-peer connection with this
+   * node.  advertise() returns a Publisher object which allows you to
+   * publish messages on that topic through a call to publish().  Once
+   * all copies of the returned Publisher object are destroyed, the topic
+   * will be automatically unadvertised.
+   *
+   * The second parameter to advertise() is the size of the message queue
+   * used for publishing messages.  If messages are published more quickly
+   * than we can send them, the number here specifies how many messages to
+   * buffer up before throwing some away.
+   */
+  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+
+  ros::Rate loop_rate(10);
+
+  /**
+   * A count of how many messages we have sent. This is used to create
+   * a unique string for each message.
+   */
+  int count = 0;
+  while (ros::ok())
+  {
+    /**
+     * This is a message object. You stuff it with data, and then publish it.
+     */
+    std_msgs::String msg;
+
+    std::stringstream ss;
+    ss << "hello world " << count;
+    msg.data = ss.str();
+
+    ROS_INFO("%s", msg.data.c_str());
+
+    /**
+     * The publish() function is how you send messages. The parameter
+     * is the message object. The type of this object must agree with the type
+     * given as a template parameter to the advertise<>() call, as was done
+     * in the constructor above.
+     */
+    chatter_pub.publish(msg);
+
+    ros::spinOnce();
+
+    loop_rate.sleep();
+    ++count;
+  }
+
+  return 0;
+}
+
+```
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/4ebe3438-502a-4146-88cc-7e58de088576/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/eb978ba8-1dc8-4103-965a-670e24d863ab/image.png)
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d544492e-bba4-49ed-ae90-39f740276423/958de919-98b6-46c2-99b5-2d7cd0e66920/image.png)
